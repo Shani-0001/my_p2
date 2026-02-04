@@ -1,9 +1,12 @@
 import numpy as np 
 import pandas as pd 
-import joblib
+import joblib 
 import streamlit as st
 import os
-
+st.set_page_config(
+    page_title="CANCER DETECTION",
+    layout="wide"
+)
 MODEL_PATH=os.path.join(os.path.dirname(__file__),"SVC.joblib")
 
 @st.cache_resource
@@ -11,13 +14,9 @@ def load_model():
     return joblib.load("SVC.joblib")
 model=load_model()
 
-
 model=joblib.load("SVC.joblib")
 
-st.set_page_config(
-    page_title="CANCER DETECTION",
-    layout="wide"
-)
+
 st.title("Breast cancer detection")
 st.write("predict is it **Malignant** or **Benign**")
 
